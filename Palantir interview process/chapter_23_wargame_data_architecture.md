@@ -98,6 +98,162 @@ Every observation, reflection, and consolidated abstraction is stored as a `Memo
 
 **The `importance` field drives intelligent filtering.** When formatting memories for an LLM prompt, the system filters to only active (non-consolidated) memories, sorts by recency, and caps at 8 entries. But the importance score is also used by consolidation logic: memories with importance ≥ 8 are *protected* from consolidation, surviving longer at full granularity.
 
+### 23.2.5 RoundSummary — The Immutable Round Record
+
+Each completed round produces a `RoundSummary` snapshot:
+
+| Field | Type | Purpose |
+|-------|------|---------|
+| `round_number` | `int` | Which round this summarizes |
+| `actions` | `list[ActionRecord]` | Complete, frozen list of every action taken this round |
+| `turn_order` | `list[str]` | The randomized order in which leaders acted |
+| `summary` | `str` | LLM-generated narrative summary of the round's events |
+| `escalation_before` | `int` | Kahn rung at the start of this round |
+| `escalation_after` | `int` | Kahn rung at the end of this round |
+| `escalation_delta` | `int` | `after - before` — positive = escalated, negative = de-escalated |
+| `threshold_crossed` | `str | None` | Name of any firebreak threshold crossed (e.g., "Nuclear War is Unthinkable") |
+| `adjudication` | `str` | The adjudicator's assessment of what *objectively* happened |
+
+**Design choice: why freeze actions into the round summary?** During a round, `actions_this_round` is a *mutable accumulator* — new actions append as each leader acts, and the list resets at the end of the round. The `RoundSummary` is the *immutable archive*. It snapshots the round's actions at exactly the moment the round closed. This means you have two representations of the same data: the live working copy (`actions_this_round`) and the historical record (`round_summaries[n].actions`). This dual-representation is a deliberate choice — real-time reads go to the working copy; historical queries go to the archive. Same pattern as a write-ahead log vs. a committed row in a database.
+
+### 23.2.6 The Complete Entity Hierarchy
+
+Here is the full nesting structure:
+
+```
+SimulationState
+├── scenario: str
+├── scenario_analysis: str
+├── round_number: int
+├── max_rounds: int
+├── escalation_level: int
+├── simulated_date: str
+├── simulation_summary: str
+├── escalation_reasoning: str
+│
+├── agents: dict[str, AgentState]
+│   └── AgentState
+│       ├── country_code: str
+│       ├── country_name: str
+│       ├── leader_name: str
+│       ├── leader_title: str
+│       ├── persona_description: str (unstructured LLM-optimized blob)
+│       ├── cabinet_roster: str
+│       ├── current_briefing: str
+│       └── joined_round: int
+│
+├── agent_memories: dict[str, list[MemoryEntry]]
+│   └── MemoryEntry
+│       ├── round_number: int
+│       ├── timestamp: str (ISO-8601)
+│       ├── content: str
+│       ├── importance: int (1-10, subjective per-leader)
+│       ├── is_reflection: bool
+│       └── consolidated: bool
+│
+├── actions_this_round: list[ActionRecord]      ← resets each round
+│   └── ActionRecord
+│       ├── round_number: int
+│       ├── actor / actor_name: str
+│       ├── action_type: str (enum: STATEMENT, MILITARY, ECONOMIC, DIPLOMATIC, INTELLIGENCE, OTHER)
+│       ├── target: str | None
+│       ├── description: str (2-3 paragraphs, operational detail)
+│       ├── public_statement: str | None
+│       ├── private_channels: str | None
+│       ├── reasoning: str (private, never shown to other leaders)
+│       └── escalation_impact: int
+│
+├── round_summaries: list[RoundSummary]         ← append-only archive
+├── escalation_history: list[dict]              ← append-only log
+├── current_kahn_rung: dict                     ← overwritten each round
+├── turn_order: list[str]                       ← overwritten each round
+├── current_turn_index: int                     ← incremented within round
+└── briefings: dict[str, str]                   ← overwritten each round
+```
+
+**Why separate `agent_memories` from `agents`?** The memory stream is stored outside the `AgentState` dict because memories are the highest-churn field in the entire state. During a 10-round simulation, `AgentState` is written once (at setup) and read repeatedly. But `agent_memories` is written *multiple times per round* — once for each pre-action reflection, once for each action observation, once for post-round reflections, and potentially once for consolidation. Keeping them in separate top-level keys lets the reducer handle memory merges independently from agent profile merges. If memories were nested inside `AgentState`, every memory append would trigger the `merge_agents` reducer, which would need to recursively merge nested dictionaries — slower, more complex, more error-prone.
+
+---
+
+## 23.2.7 The Data Validation Layer — LLM Output Contracts
+
+Every entity in the system is *produced by an LLM*, which means every entity needs a validation contract. Here is the full integrity pipeline between an LLM response and the state graph:
+
+```
+LLM Raw Response
+    │
+    ▼
+┌─────────────────────────┐
+│  1. JSON Parse           │  Did the model return valid JSON?
+│     (response_text →     │  If not: retry with "Your response was not valid JSON.
+│      dict/list)          │  Please respond with valid JSON only."
+└───────────┬─────────────┘
+            │
+            ▼
+┌─────────────────────────┐
+│  2. Truncation Detection │  Was the response cut off mid-sentence?
+│     (finish_reason check,│  Check finish_reason != MAX_TOKENS.
+│      structural check)   │  Check JSON closes all brackets.
+│                          │  If truncated: retry with "Your response was
+│                          │  truncated. Please produce a shorter response."
+└───────────┬─────────────┘
+            │
+            ▼
+┌─────────────────────────┐
+│  3. Schema Validation    │  Does the JSON match the expected structure?
+│     (Pydantic or manual  │  Required fields present? Types correct?
+│      field checks)       │  If invalid: retry with "Missing field 'X'.
+│                          │  Your response must include: [field list]."
+└───────────┬─────────────┘
+            │
+            ▼
+┌─────────────────────────┐
+│  4. Domain Validation    │  Are the values sensible?
+│     (range checks,       │  importance ∈ [1, 10]?
+│      enum membership,    │  action_type ∈ {STATEMENT, MILITARY, ...}?
+│      length guards)      │  description length > 50 chars?
+│                          │  If bad: retry with "importance must be 1-10,
+│                          │  you returned 15."
+└───────────┬─────────────┘
+            │
+            ▼
+┌─────────────────────────┐
+│  5. Corrective Retry     │  All retries include the ORIGINAL prompt +
+│     (max 3 attempts)     │  the failed response + a corrective instruction.
+│                          │  This is "corrective re-prompting" — the LLM
+│                          │  sees what it got wrong and tries to fix it.
+│                          │  After 3 failures: raise, don't silently degrade.
+└───────────┬─────────────┘
+            │
+            ▼
+   Valid, typed entity
+   ready for state graph
+```
+
+### Failure Taxonomy — What Can Go Wrong
+
+Here's a complete catalog of LLM output failures the system handles, ranked by frequency:
+
+| Failure Mode | Frequency | Root Cause | System Response |
+|---|---|---|---|
+| **Missing optional field** | Very common | LLM omits `private_channels` or `public_statement` | Fill with `None` — these fields are explicitly nullable |
+| **Truncated response** | Common | Long action descriptions exceed the model's output limit | Detect via `finish_reason == MAX_TOKENS` or unclosed JSON brackets. Retry with "Please produce a shorter response." |
+| **Wrong type** | Occasional | `importance: "high"` instead of `importance: 8` | Coerce if possible (parse `"8"` → `8`). Retry with type correction if coercion fails |
+| **Invalid enum** | Occasional | `action_type: "CYBER_ATTACK"` (not in allowed set) | Map to closest valid type (`INTELLIGENCE`) or retry with "action_type must be one of: ..." |
+| **Hallucinated structure** | Rare | LLM invents extra fields or wraps response in markdown code fences | Strip markdown fences (`json ... `), ignore unknown fields |
+| **Complete JSON failure** | Rare with Gemini JSON mode | Model outputs prose instead of JSON | Retry with explicit JSON-only instruction. Third failure = raise exception |
+| **Empty response** | Very rare | Rate limiting, model error | Retry with exponential backoff |
+
+### The Critical Design Principle: Crash, Don't Fake
+
+The system has a *hard rule*: **if all retry attempts fail, the simulation crashes with an explicit error.** It never substitutes a placeholder, a default, or a previous response. Why?
+
+1. **A fake action corrupts the entire simulation.** If Xi Jinping's action fails and you substitute a default "no action," every other leader's next briefing will incorrectly report that China did nothing. That error propagates through every subsequent round — it's not recoverable.
+2. **Silent data corruption is worse than a crash.** A crash is visible, diagnosable, and restartable. A silently corrupted simulation looks correct but produces meaningless results.
+3. **This is the Palantir philosophy.** Palantir's platform never silently invents data. If a pipeline fails, it fails loudly with a clear audit trail. The alternative — showing users fake data that looks real — is catastrophically worse than downtime.
+
+**Interview framing:** "Every LLM call in my system has a five-stage validation pipeline: JSON parse, truncation detection, schema validation, domain validation, and corrective retry. If all three retry attempts fail, the system crashes — it never substitutes fake data. I'd rather lose a simulation run than produce corrupted results that look correct. That's the same principle behind Palantir's approach: data integrity is more important than uptime."
+
 ---
 
 ## 23.3 The Reducer Pattern — How State Updates Work
@@ -137,20 +293,140 @@ This is elegant because it handles two different operations through the same red
 
 ### 23.3.2 How `merge_memories` Works
 
-`merge_memories` is the most complex reducer. Its logic:
+`merge_memories` is the most complex reducer. Here is the actual logic with line-by-line annotation:
 
-1. For each country code in the new update:
-   - If the new memories list starts with a special sentinel value (`REPLACE_MEMORIES_SENTINEL`), **replace** the entire memory stream for that country with the new list (minus the sentinel). This is used during memory consolidation, where the entire memory list is rebuilt with archived originals and new abstractions.
-   - Otherwise, **append** the new memories to the existing list for that country.
-2. Countries not mentioned in the update are left unchanged.
+```python
+REPLACE_MEMORIES_SENTINEL = "__REPLACE_ALL_MEMORIES__"
 
-This is a critical design decision. There are two fundamentally different memory operations — *add new memories* and *replace all memories* (consolidation) — and they need to go through the same reducer interface. The sentinel pattern lets you distinguish between the two without changing the function signature.
+def merge_memories(
+    existing: dict[str, list],   # {"CN": [mem1, mem2], "US": [mem3]}
+    new: dict[str, list]          # {"CN": [new_mem]}  ← partial update
+) -> dict[str, list]:
+    """Merge memory updates. Supports two modes via sentinel detection."""
+    merged = dict(existing)       # Clone — never mutate the original
+    
+    for country, memories in new.items():
+        if not memories:
+            continue
+            
+        # SENTINEL CHECK: Is this a full replacement?
+        if (isinstance(memories[0], str) and 
+            memories[0] == REPLACE_MEMORIES_SENTINEL):
+            # REPLACE MODE: Strip sentinel, overwrite entire list
+            merged[country] = memories[1:]
+        else:
+            # APPEND MODE: Add new memories to existing
+            if country in merged:
+                merged[country] = merged[country] + memories
+            else:
+                merged[country] = memories   # New country joined mid-sim
+    
+    return merged
+```
 
-### 23.3.3 Why This Matters for Your Interview
+**Why clone `existing` before modifying?** LangGraph may reference the original state dict for rollback or checkpointing. Mutating it in-place would corrupt those references. This is the same principle as immutable data structures in functional programming — every merge produces a *new* dict, never modifying the old one.
 
-Reducers solve the same problem that **MVCC** (Multi-Version Concurrency Control) solves in relational databases and that **CRDTs** (Conflict-free Replicated Data Types) solve in distributed systems. When multiple writers update the same state, you need a merge strategy. The interview-ready version:
+**State transition diagram for memory merges:**
 
-> "I implemented custom reducer functions for each complex field in the state. Instead of overwriting, each reducer defines how new data merges with existing data — append for actions, key-level merge for memories, shallow merge for agent profiles. I also designed a sentinel pattern to handle the two different memory operations (append vs. replace) through the same interface. This is conceptually the same problem as conflict resolution in distributed databases."
+```
+ROUND 3 BEGINS
+┌─────────────────────────────────────────────────────────────┐
+│ State at start:                                              │
+│   agent_memories["CN"] = [mem1(R1), mem2(R1), mem3(R2)]     │
+└─────────────┬───────────────────────────────────────────────┘
+              │
+              │ Leader reflects (APPEND mode)
+              │ Node returns: {"CN": [reflection_R3]}
+              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ After reflection merge:                                      │
+│   agent_memories["CN"] = [mem1, mem2, mem3, reflection_R3]  │
+└─────────────┬───────────────────────────────────────────────┘
+              │
+              │ Leader acts (APPEND mode)
+              │ Node returns: {"CN": [action_R3]}
+              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ After action merge:                                          │
+│   agent_memories["CN"] = [mem1, mem2, mem3, refl_R3, act_R3]│
+└─────────────┬───────────────────────────────────────────────┘
+              │
+              │ Consolidation triggered (active count = 52 > 50)
+              │ REPLACE mode — sentinel prefix
+              │ Node returns: {"CN": ["__REPLACE_ALL__",
+              │     mem2(consolidated=True),     ← marked archived
+              │     mem3(consolidated=True),     ← marked archived
+              │     abstract_1(new),             ← LLM-generated summary
+              │     reflection_R3(protected),    ← recent, kept as-is
+              │     action_R3(protected)]}       ← recent, kept as-is
+              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ After consolidation merge:                                   │
+│   agent_memories["CN"] = [mem2✓, mem3✓, abst_1, refl_R3,   │
+│                            act_R3]                           │
+│   (✓ = consolidated=True)                                    │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Edge Case: What if consolidation and a new reflection arrive simultaneously?
+
+In the current architecture, this can't happen — the graph executes nodes sequentially, so consolidation completes before any new reflection is generated. But consider a future scenario with parallel execution:
+
+- Node A returns an APPEND with `[new_reflection]`
+- Node B returns a REPLACE with `[SENTINEL, rebuilt_list]`
+
+LangGraph processes reducer updates in node-completion order. If A completes first, the APPEND adds the new reflection, then B's REPLACE overwrites everything — *including the reflection that A just added*. The reflection is lost.
+
+**The mitigation:** Keep consolidation and reflection generation in the same node (`analyze_round`), ensuring they're serialized. The consolidation logic explicitly includes all recent memories (including any just-added reflections) in the rebuilt list. This is a conscious architectural constraint — *never run consolidation concurrently with memory-producing nodes*.
+
+**Why not use separate keys per operation type?** An alternative design would use different state keys for different operations: `new_memories` for appends and `rebuilt_memories` for replacements, with a final merge step. The problem is state bloat — you'd need extra keys, an extra merge node, and you'd still need a reducer for `new_memories`. The sentinel pattern is simpler: one key, one reducer, two modes. It's the minimum viable abstraction.
+
+### 23.3.3 How `merge_agents` Works
+
+`merge_agents` is a **shallow dictionary merge** — simpler than memories but with an important design choice:
+
+```python
+def merge_agents(existing: dict, new: dict) -> dict:
+    merged = dict(existing)
+    for k, v in new.items():
+        merged[k] = v          # Overwrite entire AgentState for this country
+    return merged
+```
+
+Notice this is *key-level overwrite*, not deep merge. If a node returns `{"CN": updated_agent_state}`, the entire `AgentState` for China is replaced. This works because:
+
+1. **Agent profiles are write-once.** The `setup_agents` node writes each agent's full profile once, and no subsequent node modifies it. There are no concurrent partial updates to the same AgentState.
+2. **Briefings overwrite cleanly.** The `generate_briefing` node updates `agent["current_briefing"]`, but it returns the *complete* AgentState (with the updated briefing), not a partial update. Key-level overwrite handles this correctly.
+
+If you needed to merge partial updates *within* an AgentState (say, updating just the briefing without touching the persona), you'd need a deep merge — recursively merging nested dictionaries. The current design avoids this by always returning complete agent objects.
+
+### 23.3.4 The Complete Reducer Map
+
+| Field | Reducer | Behavior | Sentinel? |
+|-------|---------|----------|-----------|
+| `actions_this_round` | `merge_actions` | Append new actions; reset on sentinel | ✅ `RESET_ACTIONS_SENTINEL` |
+| `agent_memories` | `merge_memories` | Per-country append; per-country replace on sentinel | ✅ `REPLACE_MEMORIES_SENTINEL` |
+| `agents` | `merge_agents` | Shallow dict merge (key-level overwrite) | ❌ |
+| `briefings` | `merge_briefings` | Shallow dict merge | ❌ |
+| `round_summaries` | built-in list append | Always append (never replace) | ❌ |
+| `escalation_history` | built-in list append | Always append | ❌ |
+| `round_number` | overwrite (default) | Simple scalar — new value replaces old | ❌ |
+| `escalation_level` | overwrite (default) | Simple scalar | ❌ |
+| `current_turn_index` | overwrite (default) | Simple scalar | ❌ |
+
+**The pattern:** Complex collections (lists, nested dicts) get custom reducers. Simple scalars use LangGraph's default behavior (overwrite). Append-only collections (round_summaries, escalation_history) use LangGraph's built-in list append. Only the two highest-complexity fields (actions, memories) need sentinel patterns.
+
+### 23.3.5 Why This Matters for Your Interview
+
+Reducers solve the same problem that **MVCC** (Multi-Version Concurrency Control) solves in relational databases and that **CRDTs** (Conflict-free Replicated Data Types) solve in distributed systems. When multiple writers update the same state, you need a merge strategy.
+
+**The connection to MVCC:** In PostgreSQL, when two transactions write to the same row, MVCC creates new row versions and resolves conflicts at commit time. The reducer is the state graph's equivalent — it defines the "conflict resolution policy" for each field.
+
+**The connection to CRDTs:** A G-Counter (grow-only counter) in a distributed system increments values without coordination. The `merge_actions` reducer in APPEND mode is functionally a G-Set — a grow-only set where elements are only added, never removed. The sentinel extends it to a 2P-Set (two-phase set) where elements can be "removed" by replacing the entire collection.
+
+**Interview-ready version:**
+
+> "I implemented custom reducer functions for each complex field in the state. The memory reducer supports two modes through a sentinel pattern — APPEND for normal operations and REPLACE for consolidation — going through the same interface without changing the function signature. The actions reducer uses a similar pattern for round resets. Simple scalars use default overwrite semantics. This is conceptually the same problem as conflict resolution in distributed databases — my reducer map is essentially the schema's conflict resolution policy."
 
 ---
 
@@ -271,6 +547,137 @@ async def _retry_db_operation(self, operation, *args, max_retries=3, **kwargs):
 ```
 
 This is a standard reliability pattern, but it's worth mentioning in an interview because it shows you think about failure modes, not just the happy path.
+
+### 23.4.5 Indexing Strategy — What Gets Indexed and Why
+
+Not every column needs an index. The strategy follows one rule: **index the columns that appear in WHERE clauses and JOIN conditions.**
+
+```sql
+-- Implicit indexes (created automatically by PRIMARY KEY):
+--   simulations.id
+--   rounds.id
+--   batches.id
+
+-- Explicit indexes (created manually for query performance):
+CREATE INDEX idx_simulations_batch  ON simulations(batch_id);
+CREATE INDEX idx_simulations_status ON simulations(status);
+CREATE INDEX idx_rounds_sim_round   ON rounds(simulation_id, round_number);
+CREATE INDEX idx_rounds_escalation  ON rounds(escalation_after);
+```
+
+**Why these specific indexes?**
+
+| Index | Query It Supports | Access Pattern |
+|-------|------------------|----------------|
+| `idx_simulations_batch` | "Get all simulations for batch X" | Batch detail page; Monte Carlo aggregation |
+| `idx_simulations_status` | "Get all running simulations" | Dashboard; cleanup of orphaned runs |
+| `idx_rounds_sim_round` | "Get round 5 of simulation Y" | Timeline navigation; single-round replay |
+| `idx_rounds_escalation` | "All rounds where escalation exceeded rung 14" | Threshold analysis; batch analytics |
+
+**What I *didn't* index:** The `final_state` JSON blob, `actions` JSON, and `summary` text columns. These are large, unstructured, and never appear in WHERE clauses. Indexing them would waste disk space and slow writes for no query benefit.
+
+**Querying inside JSON — when you need it:** SQLite's `json_extract()` function allows ad-hoc queries into JSON columns without full normalization:
+
+```sql
+-- Find all simulations where China participated (stored in final_state JSON)
+SELECT id, scenario FROM simulations
+WHERE json_extract(final_state, '$.agents.CN') IS NOT NULL;
+
+-- Count simulations by final escalation level
+SELECT json_extract(final_state, '$.escalation_level') as level,
+       COUNT(*) as count
+FROM simulations
+WHERE status = 'completed'
+GROUP BY level;
+```
+
+These queries are *slow* (full table scan on the JSON column) but they're for ad-hoc investigation, not production workloads. If any of them became frequent access patterns, you'd extract the field into a first-class column — that's the "promote on demand" strategy.
+
+### 23.4.6 WAL Mode Internals — Why It Matters
+
+Without WAL, SQLite uses a **rollback journal**: before every write, SQLite copies the original page to a journal file, then modifies the database file in-place. During this process, **all readers are blocked** because the database file is in an inconsistent state.
+
+With WAL (**Write-Ahead Logging**), the model inverts:
+
+```
+WITHOUT WAL (Rollback Journal):
+  Reader ──▶ Database File ◀── Writer modifies in-place
+  Reader BLOCKED during write ❌
+
+WITH WAL:
+  Reader ──▶ Database File (always consistent)
+  Writer ──▶ WAL File (append-only log of changes)
+  Reader reads from DB + WAL snapshot ✅ No blocking
+```
+
+The key insight: **readers see a consistent snapshot of the database as of the moment they started reading.** They don't see the writer's uncommitted changes. This is exactly MVCC (Multi-Version Concurrency Control) — the same isolation model that PostgreSQL uses by default.
+
+**In the simulation context:** The frontend reads simulation state (via `GET /simulations/{id}`) while the backend writes round results (via `save_round()`). Without WAL, every frontend poll would occasionally block on a write lock, causing visible lag. With WAL, reads and writes proceed independently. The `busy_timeout=5000` pragma is a safety net — if a write does somehow block a read (e.g., during WAL checkpoint), the reader waits up to 5 seconds instead of immediately failing.
+
+**Limitation:** WAL mode allows **one writer at a time** (but unlimited concurrent readers). This is fine for the simulation — only one LangGraph execution writes to the database at a time. For a multi-writer scenario (e.g., running 10 simulations in parallel, all writing to the same database), you'd need PostgreSQL with row-level locking.
+
+### 23.4.7 The Production Migration Roadmap
+
+Here is the concrete upgrade path from SQLite to PostgreSQL, ranked by priority:
+
+| Step | Change | Effort | Impact |
+|------|--------|--------|--------|
+| **1. Connection abstraction** | Replace `sqlite3.connect()` with `asyncpg` or `psycopg3` pool | Low | Enables connection pooling, multi-writer |
+| **2. JSON → JSONB** | Change `TEXT` columns storing JSON to PostgreSQL `JSONB` | Low | Enables GIN indexing on JSON paths |
+| **3. Index JSON paths** | `CREATE INDEX ON simulations USING GIN (final_state jsonb_path_ops)` | Low | O(log n) queries into JSON fields |
+| **4. Normalize actions** | Extract `ActionRecord` into dedicated `actions` table | Medium | Cross-simulation action queries become SQL |
+| **5. Normalize memories** | Extract `MemoryEntry` into dedicated `memories` table | Medium | Cross-simulation memory queries become SQL |
+| **6. Add schema versioning** | Add `schema_version INTEGER` to `simulations` table | Low | Formal migration path for state evolution |
+| **7. Partitioning** | Partition `rounds` table by `simulation_id` | Low | Improves query performance at scale |
+
+**The critical distinction between SQLite JSON and PostgreSQL JSONB:** SQLite's `json_extract()` always performs a full text parse of the JSON string — O(n) in the size of the JSON blob. PostgreSQL's JSONB is a *binary* format with O(1) key lookups and indexable paths. This is why "promote to JSONB" is the first high-impact change in a production migration.
+
+**What the normalized `actions` table would look like:**
+
+```sql
+CREATE TABLE actions (
+    id SERIAL PRIMARY KEY,
+    simulation_id TEXT NOT NULL REFERENCES simulations(id),
+    round_number INTEGER NOT NULL,
+    actor_country VARCHAR(3) NOT NULL,
+    actor_name TEXT NOT NULL,
+    action_type VARCHAR(20) NOT NULL,    -- STATEMENT, MILITARY, ECONOMIC, etc.
+    target VARCHAR(3),                    -- Country code of target, nullable
+    description TEXT NOT NULL,
+    reasoning TEXT,                        -- Private, never shown to other leaders
+    escalation_impact INTEGER,
+    created_at TIMESTAMP DEFAULT NOW(),
+    
+    -- Compound index for the most common query pattern
+    INDEX idx_actions_sim_round (simulation_id, round_number),
+    INDEX idx_actions_actor_type (actor_country, action_type)
+);
+
+-- Now this query is trivial:
+SELECT action_type, COUNT(*) 
+FROM actions 
+WHERE actor_country = 'CN' 
+GROUP BY action_type;
+
+-- Before normalization, this required parsing JSON blobs from every simulation.
+```
+
+### 23.4.8 Data Lineage and Provenance Tracking
+
+Every piece of data in the system has a traceable origin. This is critical for the Palantir interview because Palantir's platforms are *defined* by provenance tracking.
+
+| Data | Origin | Lineage |
+|------|--------|---------|
+| Leader persona | Google Search grounding → Gemini synthesis | `setup_agents` node; grounding metadata available in Gemini response |
+| Action record | LLM generation in `leader_action` node | `reasoning` field captures the LLM's private rationale; prompt includes current memories and briefing |
+| Memory entry | Derived from action observation or LLM reflection | `round_number` + `timestamp` + `is_reflection` flag traces exact origin |
+| Escalation rung | LLM analysis of round actions against 44-rung ladder | `escalation_reasoning` field captures the LLM's justification; references specific actions |
+| Consolidated memory | LLM summarization of archived memories | Originals preserved with `consolidated=True`; abstract references source round range |
+| RAG answer | Gemini File Search retrieval + generation | `Citation` objects map to specific `simulation_id` + `round_number` |
+
+**The audit trail guarantee:** No data is ever deleted. Actions are immutable. Memories are archived, not removed. Escalation history is append-only. Round summaries are append-only. The `final_state` blob is written once and never modified after simulation completion. This makes the entire system *replayable* — given a simulation ID, you can reconstruct exactly what happened, why every leader made every decision, and how escalation progressed.
+
+**Interview framing:** "Every piece of data in my system has a traceable lineage — I can tell you exactly which LLM call produced it, what inputs fed that call, and what the model's reasoning was. Nothing is ever deleted; consolidated memories are archived with the originals preserved. This is the same provenance-tracking principle that defines Palantir's platforms — if a user asks 'where did this number come from?', the system can always answer."
 
 ---
 

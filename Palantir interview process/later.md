@@ -7,3 +7,4 @@
 7. get piece of paper
 8. talk about the baseball algorithm
 9. the case studies need to be way more detailed
+10. probably actualy going to have to change the wargame data structures because it seems pretty stupid -- like i dont understand why SQL and JSON probably should jsut be JSON first and then 

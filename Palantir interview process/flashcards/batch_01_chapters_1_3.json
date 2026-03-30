@@ -1,0 +1,919 @@
+[
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir Technologies was founded in {{c1::2003}} in {{c2::Palo Alto, CA}}.",
+    "back": "Founded 2003, Palo Alto, California.",
+    "tags": ["ch1", "founding", "dates"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "The five co-founders of Palantir are {{c1::Peter Thiel}}, {{c2::Alex Karp}}, {{c3::Joe Lonsdale}}, {{c4::Stephen Cohen}}, and {{c5::Nathan Gettings}}.",
+    "back": "Peter Thiel (Chairman), Alex Karp (CEO), Joe Lonsdale, Stephen Cohen, Nathan Gettings.",
+    "tags": ["ch1", "founders", "people"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Peter Thiel co-founded {{c1::PayPal}}, runs {{c2::Founders Fund}}, and was an early investor in {{c3::Facebook}}.",
+    "back": "PayPal co-founder, Founders Fund, early Facebook investor.",
+    "tags": ["ch1", "people", "peter_thiel"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Alex Karp holds a PhD in {{c1::social theory}} from {{c2::Goethe University Frankfurt}}, where he studied under {{c3::Jürgen Habermas}}.",
+    "back": "PhD in social theory, Goethe University Frankfurt, studied under Jürgen Habermas.",
+    "tags": ["ch1", "people", "alex_karp"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Alex Karp became Palantir's CEO in {{c1::2005}}.",
+    "back": "2005.",
+    "tags": ["ch1", "people", "dates", "alex_karp"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Joe Lonsdale later founded {{c1::Formation 8}}, {{c2::8VC}}, and {{c3::Addepar}}.",
+    "back": "Formation 8, 8VC, Addepar.",
+    "tags": ["ch1", "people", "joe_lonsdale"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "{{c1::Stephen Cohen}} built Palantir's first working prototype as a Stanford CS undergrad.",
+    "back": "Stephen Cohen — Stanford CS, first prototype builder.",
+    "tags": ["ch1", "people", "stephen_cohen"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Peter Thiel personally invested approximately ${{c1::30 million}} in Palantir's early years.",
+    "back": "$30 million from Thiel's personal funds.",
+    "tags": ["ch1", "funding", "financials"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "The company name 'Palantir' comes from {{c1::J.R.R. Tolkien}}'s *The Lord of the Rings*. The palantíri were {{c2::crystal 'seeing stones'}} that let users see events across vast distances.",
+    "back": "Tolkien's Lord of the Rings — the palantíri were seeing stones for intelligence gathering.",
+    "tags": ["ch1", "company_name", "culture"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's founding philosophy: the technology enables {{c1::sight}}, but the {{c2::human}} must interpret wisely. Software {{c3::augments}} human intelligence; it does not {{c4::replace}} judgment.",
+    "back": "Technology enables sight, humans interpret. Augment, not replace.",
+    "tags": ["ch1", "philosophy", "culture"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's first and most important early backer was {{c1::In-Q-Tel}}, the venture capital arm of the {{c2::CIA}}, which invested approximately ${{c3::2 million}}.",
+    "back": "In-Q-Tel (CIA's VC arm) invested ~$2 million.",
+    "tags": ["ch1", "funding", "in_q_tel"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "In-Q-Tel was established in {{c1::1999}} as an independent, nonprofit VC firm to identify cutting-edge commercial technologies for {{c2::U.S. national security}}.",
+    "back": "Founded 1999, identifies commercial tech for national security.",
+    "tags": ["ch1", "in_q_tel", "dates"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "The tight feedback loop of engineers and end-users iterating together in the field became the foundation of Palantir's operating model called {{c1::forward deployment}}.",
+    "back": "Forward deployment — engineers embedded with users at client sites.",
+    "tags": ["ch1", "culture", "operating_model"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir launched {{c1::Foundry}} in {{c2::2013}}, pivoting from a government-only company to a {{c3::dual-track}} (government + commercial) strategy.",
+    "back": "Foundry launched 2013 — enabled the commercial business.",
+    "tags": ["ch1", "milestones", "foundry"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "In {{c1::2019}}, Palantir relocated its headquarters from Palo Alto to {{c2::Denver, Colorado}}.",
+    "back": "HQ moved to Denver, CO in 2019.",
+    "tags": ["ch1", "milestones", "dates"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir went public via a {{c1::direct listing}} on the {{c2::NYSE}} on {{c3::September 30, 2020}} with ticker {{c4::PLTR}}. Reference price was ${{c5::7.25}}/share.",
+    "back": "Direct listing, NYSE, Sept 30, 2020, ticker PLTR, $7.25 reference price.",
+    "tags": ["ch1", "ipo", "dates", "financials"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's FY2020 (IPO year) revenue was approximately ${{c1::1.1 billion}}.",
+    "back": "~$1.1B FY2020 revenue.",
+    "tags": ["ch1", "financials", "dates"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "{{c1::AIP (Artificial Intelligence Platform)}} was launched in {{c2::May 2023}} and connected LLMs to enterprise data through the Ontology.",
+    "back": "AIP launched May 2023 — LLMs connected to the Ontology.",
+    "tags": ["ch1", "milestones", "aip", "dates"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "In 2024, Palantir's stock was the {{c1::#1 performer in the S&P 500}}, up approximately {{c2::340%}} for the year.",
+    "back": "#1 S&P 500 performer, up ~340% in 2024.",
+    "tags": ["ch1", "financials", "milestones"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's FY2025 total revenue was approximately ${{c1::4.48 billion}} (+{{c2::56%}} YoY) with approximately {{c3::3,936}} employees.",
+    "back": "$4.48B revenue, +56% YoY, ~3,936 employees.",
+    "tags": ["ch1", "financials"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's FY2025 revenue per employee is approximately ${{c1::1.14 million}}.",
+    "back": "~$1.14M revenue per employee.",
+    "tags": ["ch1", "financials"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "FY2025 U.S. Government revenue was ~${{c1::1.855B}} (+{{c2::55%}} YoY).",
+    "back": "$1.855B, +55% YoY.",
+    "tags": ["ch1", "financials", "government"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "FY2025 U.S. Commercial revenue was ~${{c1::1.465B}} (+{{c2::109%}} YoY), driven primarily by {{c3::AIP}} adoption.",
+    "back": "$1.465B, +109% YoY, driven by AIP.",
+    "tags": ["ch1", "financials", "commercial"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "In August 2025, the U.S. Army awarded Palantir a {{c1::10-year}} Enterprise Service Agreement (ESA) worth up to ${{c2::10 billion}}, consolidating {{c3::75}} existing software contracts.",
+    "back": "10-year, up to $10B Army ESA, consolidating 75 contracts.",
+    "tags": ["ch1", "contracts", "army"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir won the {{c1::Maven Smart System}} contract — total Maven-related Army awards exceed ${{c2::1 billion}}.",
+    "back": "Maven Smart System, >$1B combined.",
+    "tags": ["ch1", "contracts", "project_maven"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "The UK Ministry of Defence awarded Palantir a three-year, {{c1::£240.6 million}} contract in December 2025.",
+    "back": "£240.6M, 3-year UK MoD contract (Dec 2025).",
+    "tags": ["ch1", "contracts", "uk_mod"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "NHS England awarded Palantir a seven-year, {{c1::£330 million}} contract for a {{c2::Federated Data Platform (FDP)}} in November 2023.",
+    "back": "£330M, 7-year, Federated Data Platform for NHS.",
+    "tags": ["ch1", "contracts", "nhs"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "The CDC awarded Palantir a five-year, ${{c1::443 million}} contract in December 2022 to create a '{{c2::Common Operating Picture}}' for public health.",
+    "back": "$443M, 5-year CDC contract, Common Operating Picture.",
+    "tags": ["ch1", "contracts", "cdc"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "At Palantir, a Forward Deployed Engineer (FDE) is internally called '{{c1::Delta}}' and a Deployment Strategist is internally called '{{c2::Echo}}'.",
+    "back": "FDE = Delta, DS = Echo.",
+    "tags": ["ch1", "culture", "internal_terms"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's culture is organized around small, autonomous teams of {{c1::3-8 people}} called {{c2::micro-teams}}.",
+    "back": "3-8 person micro-teams.",
+    "tags": ["ch1", "culture", "org_structure"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's three core values are: {{c1::Innovation}}, {{c2::Mission-Driven Impact}}, and {{c3::Meritocracy}}.",
+    "back": "Innovation, Mission-Driven Impact, Meritocracy.",
+    "tags": ["ch1", "culture", "values"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "The {{c1::Meritocracy Fellowship}} (launched {{c2::2024}}) offers {{c3::high school graduates}} full-time work at Palantir as an alternative to a four-year degree.",
+    "back": "Meritocracy Fellowship, 2024, high-school-grad alternative to college.",
+    "tags": ["ch1", "culture", "meritocracy_fellowship"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's ICE tools include {{c1::ICM (Investigative Case Management)}}, {{c2::FALCON}}, and {{c3::ImmigrationOS}}.",
+    "back": "ICM, FALCON, ImmigrationOS — tools for ICE/HSI.",
+    "tags": ["ch1", "controversies", "ice"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "{{c1::Google}} originally led Project Maven but withdrew in 2019 under employee protest. {{c2::Palantir}} stepped in and built the Maven Smart System.",
+    "back": "Google withdrew from Project Maven → Palantir took over.",
+    "tags": ["ch1", "controversies", "project_maven"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's gross margin is approximately {{c1::80%+}}.",
+    "back": "~80%+ gross margin.",
+    "tags": ["ch1", "financials"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's market capitalization surpassed ${{c1::430 billion}} by late 2025, placing it among the top {{c2::30}} most valuable U.S. companies.",
+    "back": "$430B+ market cap, top 30 U.S. companies.",
+    "tags": ["ch1", "financials"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "In February 2025, Karp and co-author {{c1::Nicholas Zamiska}} published '{{c2::The Technological Republic: Hard Power, Soft Belief, and the Future of the West}}'.",
+    "back": "Nicholas Zamiska co-authored 'The Technological Republic' with Karp, Feb 2025.",
+    "tags": ["ch1", "philosophy", "book"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Karp describes himself as a '{{c1::progressive}}' and '{{c2::socialist}}' who is simultaneously a '{{c3::techno-nationalist}}' and defense hawk.",
+    "back": "Progressive socialist + techno-nationalist defense hawk.",
+    "tags": ["ch1", "philosophy", "alex_karp"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's defense prime competitors include {{c1::Raytheon/RTX}}, {{c2::Lockheed Martin}}, {{c3::Northrop Grumman}}, and {{c4::L3Harris}}.",
+    "back": "Raytheon/RTX, Lockheed Martin, Northrop Grumman, L3Harris.",
+    "tags": ["ch1", "competitors", "defense"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's consulting firm competitors include {{c1::Accenture Federal Services}}, {{c2::Deloitte}}, and {{c3::Booz Allen Hamilton}}.",
+    "back": "Accenture Federal Services, Deloitte, Booz Allen Hamilton.",
+    "tags": ["ch1", "competitors", "consulting"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's data platform competitors include {{c1::Snowflake}} and {{c2::Databricks}}. In 2025, Palantir and Databricks formalized a {{c3::strategic partnership}}.",
+    "back": "Snowflake, Databricks. Databricks partnership in 2025.",
+    "tags": ["ch1", "competitors", "data_platforms"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's PayPal fraud origin: fraud accounted for over {{c1::1%}} of PayPal's total transaction volume — an existential threat.",
+    "back": ">1% of transaction volume was fraud.",
+    "tags": ["ch1", "founding", "paypal"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "'{{c1::AIPCon}}' is Palantir's marquee customer conference showcasing real-world AIP deployments.",
+    "back": "AIPCon — Palantir's customer conference.",
+    "tags": ["ch1", "key_phrases"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Karp called Google's protesting employees '{{c1::nihilists}}' and argued military AI is essential for {{c2::U.S. national security}}.",
+    "back": "Called Google protesters 'nihilists'; military AI essential for national security.",
+    "tags": ["ch1", "controversies", "culture"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Palantir's founding thesis on the privacy-security balance: '{{c1::privacy and security are not in conflict}}'— the right technology enables more {{c2::targeted}}, {{c3::auditable}}, and {{c4::civil-liberties-respecting}} intelligence analysis.",
+    "back": "Privacy and security are not in conflict — technology can be targeted, auditable, and civil-liberties-respecting.",
+    "tags": ["ch1", "philosophy"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "Karp described Palantir's culture as an '{{c1::artist colony}}' — a deliberate contrast to command-and-control defense contractors.",
+    "back": "'Artist colony' — not a traditional corporate hierarchy.",
+    "tags": ["ch1", "culture"]
+  },
+  {
+    "chapter": 1,
+    "card_type": "cloze",
+    "front": "In late 2025, Karp described Palantir's culture as intentionally '{{c1::tribal and cultish}}'.",
+    "back": "'Tribal and cultish' — selectivity as a feature.",
+    "tags": ["ch1", "culture"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Palantir's four core platforms are {{c1::Gotham}}, {{c2::Foundry}}, {{c3::Apollo}}, and {{c4::AIP}}.",
+    "back": "Gotham, Foundry, Apollo, AIP.",
+    "tags": ["ch2", "products"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Palantir's Three Pillars: Foundry/Gotham = '{{c1::The What}}', The Ontology = '{{c2::The How}}', Apollo = '{{c3::The Where}}'.",
+    "back": "The What (platforms), The How (ontology/meaning), The Where (deployment).",
+    "tags": ["ch2", "three_pillars", "framework"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::Gotham}} is Palantir's platform for {{c2::defense and intelligence}}, first developed in {{c3::2008}}.",
+    "back": "Gotham — defense & intelligence, 2008.",
+    "tags": ["ch2", "gotham", "dates"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Gotham's defining capability is {{c1::multi-INT fusion}} — integrating {{c2::SIGINT}}, {{c3::HUMINT}}, {{c4::GEOINT}}, {{c5::OSINT}}, and {{c6::MASINT}} into one platform.",
+    "back": "Multi-INT fusion: SIGINT, HUMINT, GEOINT, OSINT, MASINT.",
+    "tags": ["ch2", "gotham", "acronyms"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "SIGINT stands for {{c1::Signals Intelligence}} — intercepted {{c2::communications and electronic signals}}.",
+    "back": "Signals Intelligence — phone metadata, radio intercepts, cyber traffic.",
+    "tags": ["ch2", "gotham", "acronyms"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "HUMINT stands for {{c1::Human Intelligence}} — information from {{c2::human sources}}.",
+    "back": "Human Intelligence — informant reports, debriefings.",
+    "tags": ["ch2", "gotham", "acronyms"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "GEOINT stands for {{c1::Geospatial Intelligence}} — {{c2::imagery and geospatial data}} like satellite photos and drone footage.",
+    "back": "Geospatial Intelligence — satellite imagery, terrain maps.",
+    "tags": ["ch2", "gotham", "acronyms"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "OSINT stands for {{c1::Open-Source Intelligence}} — {{c2::publicly available information}} like news and social media.",
+    "back": "Open-Source Intelligence — news, social media, public records.",
+    "tags": ["ch2", "gotham", "acronyms"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "MASINT stands for {{c1::Measurement & Signature Intelligence}} — {{c2::technical measurements of physical phenomena}} like radar signatures.",
+    "back": "Measurement & Signature Intelligence — radar, nuclear radiation, chemical traces.",
+    "tags": ["ch2", "gotham", "acronyms"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Gotham's five architecture layers (bottom to top): {{c1::Federation}} → {{c2::Entity Resolution}} → {{c3::Ontology}} → {{c4::Query}} → {{c5::Visualization}}.",
+    "back": "Federation → Entity Resolution → Ontology → Query → Visualization.",
+    "tags": ["ch2", "gotham", "architecture"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::Gaia}} is Gotham's collaborative {{c2::geospatial command and control}} application for map-based analysis.",
+    "back": "Gaia — Gotham's geospatial/C2 map application.",
+    "tags": ["ch2", "gotham", "product_names"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Gotham's Entity Resolution layer uses {{c1::fuzzy matching}}, {{c2::feature generation}}, {{c3::ML models}}, and {{c4::human-in-the-loop validation}} to de-duplicate records across sources.",
+    "back": "Fuzzy matching, feature generation, ML, human-in-the-loop validation.",
+    "tags": ["ch2", "gotham", "entity_resolution"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::Pattern-of-Life}} detection analyzes temporal and spatial data over time to identify habitual behaviors — movement patterns, communication schedules, meeting locations.",
+    "back": "Pattern-of-Life — habitual behavioral analysis over time.",
+    "tags": ["ch2", "gotham", "capabilities"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::COVs}} (Common Operating Views) are customizable dashboards in Gotham for any entity or operation.",
+    "back": "COVs — Common Operating Views in Gotham.",
+    "tags": ["ch2", "gotham", "acronyms"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::Foundry}} is Palantir's platform for {{c2::commercial enterprises and civil government agencies}}, often described as an '{{c3::enterprise operating system}}'.",
+    "back": "Foundry — enterprise OS for commercial + civil government.",
+    "tags": ["ch2", "foundry"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "explain_it",
+    "front": "Explain the difference between Gotham and Foundry: who uses each, what each does, and how they relate.",
+    "back": "**Gotham** = defense & intelligence (CIA, NSA, SOCOM) — fuses multi-INT data into actionable intelligence for military/intel operations. **Foundry** = commercial enterprises & civil government (hospitals, manufacturers, FDA) — integrates enterprise data into an 'operating system' for operational decisions. **Relationship**: Both build on the same Ontology architecture (objects, links, actions). Gotham models intelligence entities; Foundry models business entities. AIP sits on top of both, Apollo deploys both.",
+    "tags": ["ch2", "compare", "gotham", "foundry"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Foundry's four architecture layers (bottom to top): {{c1::Connectors}} → {{c2::Transformation Engine}} → {{c3::Ontology}} → {{c4::Application Layer}}.",
+    "back": "Connectors → Transformation Engine → Ontology → Application Layer.",
+    "tags": ["ch2", "foundry", "architecture"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Foundry's three data transformation tools: {{c1::Pipeline Builder}} (point-and-click), {{c2::Code Workbook}} (interactive Python/SQL/R), and {{c3::Code Repository}} (production-grade, Git-based).",
+    "back": "Pipeline Builder, Code Workbook, Code Repository.",
+    "tags": ["ch2", "foundry", "tools"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "explain_it",
+    "front": "Explain the progression: Pipeline Builder → Code Workbook → Code Repository. Who uses each and when?",
+    "back": "**Pipeline Builder** = citizen developers / ops analysts — point-and-click pipeline building, no code. Best for standard data integrations.\n**Code Workbook** = data analysts prototyping — interactive Python/SQL/R coding environment for exploratory analysis and quick transforms.\n**Code Repository** = production engineers — full Git-based IDE with CI/CD, unit testing, and peer review. Highest governance. DS helps customers choose the right tool for each team.",
+    "tags": ["ch2", "foundry", "tools", "compare"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Foundry's four application-building tools are {{c1::Workshop}} (low-code builder), {{c2::Slate}} (flexible HTML/CSS/JS builder), {{c3::Object Explorer}} (search & discovery), and {{c4::Quiver}} (BI & analytics).",
+    "back": "Workshop, Slate, Object Explorer, Quiver.",
+    "tags": ["ch2", "foundry", "tools"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::Workshop}} is Palantir's flagship application builder for operational apps. It uses pre-built UI widgets that natively understand the {{c2::Ontology}}.",
+    "back": "Workshop — flagship no-code app builder on Ontology widgets.",
+    "tags": ["ch2", "foundry", "workshop"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::Slate}} offers maximum flexibility with custom {{c2::HTML, CSS, and JavaScript}} but has {{c3::higher maintenance burden}} than Workshop.",
+    "back": "Slate — custom HTML/CSS/JS, flexible but harder to maintain.",
+    "tags": ["ch2", "foundry", "slate"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::Apollo}} is Palantir's {{c2::continuous delivery and infrastructure management}} platform — tagline: '{{c3::Mission Control for Software Deployment}}'.",
+    "back": "Apollo — continuous delivery, 'Mission Control for Software Deployment.'",
+    "tags": ["ch2", "apollo"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Apollo operates on a {{c1::hub-and-spoke}} architecture: a central {{c2::SaaS hub}} orchestrates distributed {{c3::spoke environments}} (Kubernetes clusters).",
+    "back": "Hub-and-spoke: SaaS hub orchestrates spoke Kubernetes clusters.",
+    "tags": ["ch2", "apollo", "architecture"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "For air-gapped networks, Apollo deploys {{c1::Remote Hubs}} within isolated networks. The {{c2::Binary Transfer Service (BTS)}} automates secure software transfer across security domains.",
+    "back": "Remote Hubs inside air-gapped networks; BTS for secure cross-domain transfer.",
+    "tags": ["ch2", "apollo", "air_gap"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Apollo holds U.S. government accreditations at DoD Impact Level {{c1::5}} (IL5) and Impact Level {{c2::6}} (IL6).",
+    "back": "IL5 and IL6 accreditations.",
+    "tags": ["ch2", "apollo", "compliance"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Apollo can deploy to extreme edge environments including {{c1::submarines}}, {{c2::forward operating bases}}, {{c3::drones}}, {{c4::Humvees}}, and {{c5::disconnected aircraft}}.",
+    "back": "Submarines, FOBs, drones, Humvees, aircraft.",
+    "tags": ["ch2", "apollo", "edge"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "explain_it",
+    "front": "Explain why Apollo is often called Palantir's 'deepest moat'. What strategic advantage does it provide?",
+    "back": "1. **Lock-in**: Once Apollo manages your infra, switching costs are enormous. 2. **Enables gov contracts**: DoD requires classified-network deployment — Apollo was built for IL5/IL6/air-gapped from day one, competitors can't match. 3. **Third-party deployment**: Apollo can deploy *any* containerized software, not just Palantir's. 4. **Speed**: While competitors spend months on FedRAMP certification, Apollo already has the accreditations. No other commercial software company can deploy from cloud to submarine to fighter jet.",
+    "tags": ["ch2", "apollo", "strategy"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::AIP}} (Artificial Intelligence Platform) was launched in {{c2::April 2023}} and is Palantir's {{c3::generative AI layer}} connecting LLMs to enterprise data through the Ontology.",
+    "back": "AIP — generative AI layer, April 2023, LLMs + Ontology.",
+    "tags": ["ch2", "aip", "dates"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "explain_it",
+    "front": "Explain how Palantir AIP differs from 'just using ChatGPT'. Give at least 4 dimensions.",
+    "back": "1. **Data Access**: ChatGPT has public internet data. AIP is grounded in the org's private Ontology — real, live data.\n2. **Hallucination**: ChatGPT free-generates. AIP constrains LLMs to query verified Ontology objects (ontology-grounded AI).\n3. **Action**: ChatGPT generates text. AIP triggers real operational actions (create orders, reassign resources).\n4. **Security**: ChatGPT = single API key. AIP = purpose-based access control, LLM sees only what's essential.\n5. **Audit**: ChatGPT = minimal logging. AIP = every LLM interaction logged and traceable.\n6. **Deployment**: ChatGPT = cloud-only. AIP = cloud, on-prem, edge, air-gapped via Apollo.",
+    "tags": ["ch2", "aip", "compare"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "AIP's three key components are {{c1::AIP Logic}} (build LLM functions), {{c2::Agent Studio}} (deploy AI agents), and {{c3::AIP Evals}} (test AI performance).",
+    "back": "Logic (build), Agent Studio (deploy), Evals (test).",
+    "tags": ["ch2", "aip", "components"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::AIP Logic}} is a {{c2::no-code}} development environment for building, testing, and deploying LLM-powered functions chained with Ontology data.",
+    "back": "AIP Logic — no-code LLM function builder.",
+    "tags": ["ch2", "aip", "aip_logic"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::Agent Studio}} creates interactive AI assistants (AIP Agents) powered by LLMs + Ontology + documents + custom tools.",
+    "back": "Agent Studio — create/deploy AIP Agents.",
+    "tags": ["ch2", "aip", "agent_studio"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::AIP Evals}} tests AI performance using test cases, '{{c2::LLM-as-a-judge}}' patterns, and human feedback integration.",
+    "back": "AIP Evals — testing with LLM-as-a-judge and human feedback.",
+    "tags": ["ch2", "aip", "evals"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "AIP prevents hallucination through five methods: {{c1::Ontology grounding}}, {{c2::Tool Use pattern}}, {{c3::metadata augmentation}}, {{c4::computational delegation}}, and {{c5::evaluation loops}}.",
+    "back": "Ontology grounding, Tool Use, metadata augmentation, computational delegation, evaluation loops.",
+    "tags": ["ch2", "aip", "hallucination"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "The key phrase for AIP in interviews is '{{c1::ontology-grounded AI}}' — LLMs constrained to query verified Ontology objects.",
+    "back": "'Ontology-grounded AI.'",
+    "tags": ["ch2", "aip", "interview_tip"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::AIP Bootcamps}} are intensive {{c2::five-day}} workshops where customers bring their own data and build working AI applications. Over {{c3::1,300}} bootcamps were completed by mid-2024.",
+    "back": "5-day workshops, 1,300+ completed by mid-2024.",
+    "tags": ["ch2", "aip", "bootcamps"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Palantir's Net Dollar Retention in 2025 was {{c1::134%}}, meaning existing customers expanded spending by 34%.",
+    "back": "134% net dollar retention.",
+    "tags": ["ch2", "financials"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "AIP and Foundry together comprise over {{c1::300}} microservices and assets within a zero-trust security infrastructure.",
+    "back": "300+ microservices.",
+    "tags": ["ch2", "architecture"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "AIPCon notable customers: {{c1::Nebraska Medicine}} (20+ AI use cases in 6 months), {{c2::Trinity Industries}} (90% automation), {{c3::bp}} (nuclear energy), {{c4::American Airlines}} (fleet optimization).",
+    "back": "Nebraska Medicine, Trinity Industries, bp, American Airlines.",
+    "tags": ["ch2", "aip", "customers"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::Ontology SDK 2.0}} was announced at {{c2::DevCon}} in November 2024.",
+    "back": "Ontology SDK 2.0, DevCon, Nov 2024.",
+    "tags": ["ch2", "aip", "dates"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Palantir partnered with {{c1::NVIDIA}} to deliver a '{{c2::sovereign AI operating system}}' reference architecture integrating AIP + Foundry + Apollo.",
+    "back": "NVIDIA partnership for sovereign AI OS.",
+    "tags": ["ch2", "partnerships"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Gotham users include {{c1::CIA}}, {{c2::NSA}}, {{c3::DIA}}, {{c4::FBI}}, {{c5::SOCOM}}, {{c6::DHS}}, and the {{c7::Ukrainian Military}}.",
+    "back": "CIA, NSA, DIA, FBI, SOCOM, DHS, Ukrainian Military, and more.",
+    "tags": ["ch2", "gotham", "users"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "explain_it",
+    "front": "Explain Palantir's 'enterprise operating system' analogy: how does Foundry map to the concepts of a computer OS?",
+    "back": "**File System** = Data integration/storage layer. **Kernel** = Ontology (maps data to meaning). **Device Drivers** = Connectors (interface with external systems). **Application Framework** = Workshop, Slate, Object Explorer. **Process Management** = Pipelines, transforms, jobs. **User Permissions** = RBAC, audit trails. **App Store** = Marketplace of pre-built apps. Just as an OS mediates hardware↔applications, Foundry mediates data sources↔operational decisions.",
+    "tags": ["ch2", "foundry", "analogy"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "Palantir collaborated with {{c1::Lockheed Martin}} in 2022 to modernize naval combat systems using Apollo.",
+    "back": "Lockheed Martin partnership, 2022, naval combat systems.",
+    "tags": ["ch2", "partnerships", "apollo"]
+  },
+  {
+    "chapter": 2,
+    "card_type": "cloze",
+    "front": "{{c1::MetaConstellation}} is Palantir's satellite tasking platform that enables autonomous sensor management from space.",
+    "back": "MetaConstellation — satellite tasking and autonomous sensor management.",
+    "tags": ["ch2", "products"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "In computer science, an ontology is a {{c1::formal, explicit specification of a shared conceptualization}} — defining individuals, classes, attributes, relations, and axioms.",
+    "back": "Formal, explicit specification of a shared conceptualization.",
+    "tags": ["ch3", "ontology", "definitions"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The Palantir Ontology is a {{c1::live, editable, governed semantic layer}} that maps raw data to real-world entities, creating a '{{c2::digital twin}}' of the business.",
+    "back": "Live, editable, governed semantic layer → digital twin.",
+    "tags": ["ch3", "ontology", "definitions"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "{{c1::Shyam Sankar}} describes the Ontology as a 'digital twin of the organization.'",
+    "back": "Shyam Sankar — Palantir COO/CTO (context: 'digital twin of the organization').",
+    "tags": ["ch3", "people", "ontology"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The Ontology's four building blocks are {{c1::Object Types}} (nouns), {{c2::Properties}} (adjectives), {{c3::Links}} (relationships), and {{c4::Actions}} (verbs).",
+    "back": "Object Types, Properties, Links, Actions.",
+    "tags": ["ch3", "ontology", "building_blocks"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "In the Ontology, an Object Type is analogous to a {{c1::table}}, an Object is analogous to a {{c2::row}}, and an Object Set is analogous to a {{c3::result set}} in a database.",
+    "back": "Object Type=Table, Object=Row, Object Set=Result set.",
+    "tags": ["ch3", "ontology", "object_types"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "Object Types are created and managed in {{c1::Ontology Manager}}, the administrative interface within Foundry.",
+    "back": "Ontology Manager — admin interface for Object Types.",
+    "tags": ["ch3", "ontology", "tools"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "Palantir recommends {{c1::string-based}} primary keys over {{c2::numeric IDs}} because they support UUIDs, composite keys, and alphanumeric systems.",
+    "back": "String primary keys preferred (UUID support).",
+    "tags": ["ch3", "ontology", "best_practices"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The three Link cardinalities in the Ontology are {{c1::One-to-One}}, {{c2::One-to-Many}}, and {{c3::Many-to-Many}}.",
+    "back": "1:1, 1:M, M:M.",
+    "tags": ["ch3", "ontology", "links"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "A {{c1::self-referencing link}} allows an Object Type to link to itself, e.g., Employee → manages → Employee.",
+    "back": "Self-referencing link — hierarchical structures within one type.",
+    "tags": ["ch3", "ontology", "links"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "Ontology Links are unlike traditional joins because they are {{c1::named and directional}}, {{c2::traversable at any depth}}, and {{c3::security-aware}} (hidden if user lacks permission).",
+    "back": "Named/directional, traversable at any depth, security-aware.",
+    "tags": ["ch3", "ontology", "links"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "An Action Type defines a structured operation that {{c1::creates}}, {{c2::modifies}}, or {{c3::deletes}} Objects, Properties, and Links in a governed, auditable way.",
+    "back": "Creates, modifies, or deletes Objects/Links — governed and auditable.",
+    "tags": ["ch3", "ontology", "actions"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The four elements of an Action are: {{c1::parameter collection}}, {{c2::validation logic}}, {{c3::side effects}}, and {{c4::audit trail}}.",
+    "back": "Parameter collection, validation, side effects, audit trail.",
+    "tags": ["ch3", "ontology", "actions"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The four types of Actions are {{c1::single-object}}, {{c2::bulk}}, {{c3::form-based}}, and {{c4::function-backed}}.",
+    "back": "Single-object, bulk, form-based, function-backed.",
+    "tags": ["ch3", "ontology", "actions"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The Ontology's three layers (bottom to top) are: {{c1::Semantic Layer}} ('The Nouns'), {{c2::Kinetic Layer}} ('The Verbs'), and {{c3::Dynamic Layer}} ('The Rules').",
+    "back": "Semantic (nouns) → Kinetic (verbs) → Dynamic (rules).",
+    "tags": ["ch3", "ontology", "layers"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The {{c1::Semantic Layer}} defines Object Types, Properties, and Link Types — answering '{{c2::What entities exist and how do they relate?}}'",
+    "back": "Semantic Layer — 'What exists?' — Object Types, Properties, Links. Built by data engineers + DS.",
+    "tags": ["ch3", "ontology", "semantic_layer"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The {{c1::Kinetic Layer}} defines Actions, Functions, Writeback, and OSDK — answering '{{c2::How does the organization take action and change state?}}'",
+    "back": "Kinetic Layer — 'What can happen?' — Actions, Functions, Writeback, OSDK.",
+    "tags": ["ch3", "ontology", "kinetic_layer"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The {{c1::Dynamic Layer}} defines Business Rules, Policies, Permissions (RBAC), Workflows, and Dynamic Security — answering '{{c2::How does the organization govern and enforce?}}'",
+    "back": "Dynamic Layer — 'Who can see/do what?' — Rules, RBAC, workflows.",
+    "tags": ["ch3", "ontology", "dynamic_layer"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "explain_it",
+    "front": "Explain how the Palantir Ontology differs from a traditional database schema. Give at least 4 dimensions.",
+    "back": "1. **Purpose**: DB schema organizes storage. Ontology models real-world decisions & operations.\n2. **Writability**: DB tables are raw CRUD. Ontology enforces governed Actions with validation, side effects, and audit trails.\n3. **Semantics**: DB has tables/columns. Ontology has Object Types, Properties, Links — a shared business vocabulary.\n4. **Security**: DB has table-level perms. Ontology has object-level, row-level, and column-level RBAC that propagates to every app and AI agent.\n5. **AI Integration**: DB can't ground an LLM. Ontology objects serve as the 'truth layer' for AIP to prevent hallucination.\n6. **Application layer**: From an Ontology, you can build apps (Workshop) in hours without building an API layer — the Ontology IS the API.",
+    "tags": ["ch3", "ontology", "compare"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "{{c1::OSDK}} (Ontology SDK) supports {{c2::TypeScript}}, {{c3::Python}}, and {{c4::Java}} for programmatic access to the Ontology.",
+    "back": "OSDK — TypeScript, Python, Java.",
+    "tags": ["ch3", "ontology", "osdk"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "{{c1::Writeback}} is the Ontology capability that pushes changes back to {{c2::source systems}} (e.g., updating SAP after an approval in Foundry).",
+    "back": "Writeback — push Ontology changes back to source systems.",
+    "tags": ["ch3", "ontology", "writeback"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "A {{c1::Derived Property}} is computed at {{c2::runtime}} from other properties or links (beta as of late 2024). Example: customer.lifetime_value = SUM of all linked order.total_price.",
+    "back": "Derived Property — computed at query time, beta feature.",
+    "tags": ["ch3", "ontology", "properties"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "A {{c1::Shared Property}} is a property definition reused across multiple Object Types for consistent naming and typing (e.g., created_at_timestamp).",
+    "back": "Shared Property — reusable property definition across Object Types.",
+    "tags": ["ch3", "ontology", "properties"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "{{c1::Backing Dataset}} is the raw data source (Parquet files, tables, API feeds) that feeds an Object Type. The Ontology does not store data independently.",
+    "back": "Backing Dataset — the raw source; Ontology provides a semantic view, not storage.",
+    "tags": ["ch3", "ontology", "definitions"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The five-step Ontology design framework is: {{c1::DISCOVER}} → {{c2::MODEL}} → {{c3::INSTRUMENT}} → {{c4::ACTIVATE}} → {{c5::GOVERN}}.",
+    "back": "DISCOVER → MODEL → INSTRUMENT → ACTIVATE → GOVERN.",
+    "tags": ["ch3", "ontology", "interview_framework"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "DISCOVER asks '{{c1::What decisions do users make?}}'. MODEL asks '{{c2::What entities and relationships support those decisions?}}'.",
+    "back": "DISCOVER = decisions. MODEL = entities + relationships.",
+    "tags": ["ch3", "ontology", "interview_framework"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "INSTRUMENT asks '{{c1::What data sources back these entities?}}'. ACTIVATE asks '{{c2::What actions do users need to perform?}}'. GOVERN asks '{{c3::Who can see and do what?}}'.",
+    "back": "INSTRUMENT = data sources. ACTIVATE = actions. GOVERN = permissions.",
+    "tags": ["ch3", "ontology", "interview_framework"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "Best practice: Model {{c1::business decisions}}, not {{c2::source systems}}. Create Object Types like 'Customer' and 'Order', not 'sap_orders_raw'.",
+    "back": "Model decisions, not source systems.",
+    "tags": ["ch3", "ontology", "best_practices"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "Best practice: Use {{c1::snake_case}} naming, no {{c2::version suffixes}} (e.g., _v2), and suffix with type hints ({{c3::_timestamp}}, {{c4::_id}}, {{c5::_count}}).",
+    "back": "snake_case, no version suffixes, add type hints like _timestamp/_id/_count.",
+    "tags": ["ch3", "ontology", "best_practices"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "{{c1::Foundry Branching}} (beta, 2025) allows testing Actions on branches {{c2::without committing to production}}.",
+    "back": "Foundry Branching — test Actions on branches safely.",
+    "tags": ["ch3", "ontology", "tools"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "{{c1::Native Federation}} incorporates external datasets into the Ontology without {{c2::duplicating data}}.",
+    "back": "Native Federation — query external data without duplication.",
+    "tags": ["ch3", "ontology", "definitions"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "explain_it",
+    "front": "Explain why Palantir considers the Ontology their 'core IP' and deepest competitive moat.",
+    "back": "1. **The Ontology turns raw data into operational decisions** — competitors can copy UIs but can't replicate a deeply integrated, governed, real-time semantic layer over an entire enterprise's data.\n2. **Unified interface**: Same objects consumed by Workshop, Slate, AIP agents, OSDK apps, and API gateways — one semantic framework everywhere.\n3. **AI grounding**: The Ontology prevents LLM hallucination by constraining AI to verified objects. Without it, enterprise AI is unreliable.\n4. **Citizen development**: Because the Ontology IS the API (data model + permissions + actions), non-engineers build apps in hours, not months.\n5. **Cross-platform spine**: Same Ontology concept in Gotham, Foundry, and AIP — it's the architectural DNA of everything Palantir builds.",
+    "tags": ["ch3", "ontology", "strategy"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The Ontology's '80/20' principle: Without an Ontology, building an app requires 8 steps (requirements → schema → API → frontend → auth → logic → deploy → maintain). With an Ontology, it's just {{c1::2 steps}}: define Objects/Links/Actions → {{c2::drag-and-drop in Workshop}}.",
+    "back": "2 steps: define Ontology + build in Workshop. Ontology replaces API, auth, schema, and logic layers.",
+    "tags": ["ch3", "ontology", "value_prop"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The Semantic Web standards associated with the academic ontology concept include {{c1::W3C}}, {{c2::OWL}}, and {{c3::RDF}}.",
+    "back": "W3C, OWL, RDF — Semantic Web standards.",
+    "tags": ["ch3", "ontology", "academic"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "The {{c1::Developer Console}} is the portal for creating and managing {{c2::OSDK}} applications.",
+    "back": "Developer Console — manage OSDK apps.",
+    "tags": ["ch3", "ontology", "tools"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "A {{c1::Side Effect}} is an additional consequence triggered by an Action, such as sending a notification, updating linked objects, or triggering a pipeline.",
+    "back": "Side Effect — additional consequence of an Action (notification, pipeline trigger, etc.).",
+    "tags": ["ch3", "ontology", "definitions"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "explain_it",
+    "front": "Explain the Ontology's three-layer model using the 'dictionary' analogy. What is each layer's analogy and who builds it?",
+    "back": "**Semantic Layer** = 'The dictionary and grammar' — defines what nouns exist and how they relate. Built by data engineers + DS.\n**Kinetic Layer** = 'The allowed sentences' — the verbs, operations, and workflows that can be performed. Built by engineers + DS.\n**Dynamic Layer** = 'The law and governance' — rules determining who can say what, when, and under what conditions. Built by DS, security teams, governance leads.",
+    "tags": ["ch3", "ontology", "layers", "analogy"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "In the Ontology, security policies propagate automatically — if a user can't see a Patient object, they can't see it in {{c1::any application}}, {{c2::any report}}, or {{c3::any AI agent response}}.",
+    "back": "Security propagates everywhere — apps, reports, AI agents.",
+    "tags": ["ch3", "ontology", "security"]
+  },
+  {
+    "chapter": 3,
+    "card_type": "cloze",
+    "front": "Palantir's framing: shipping an LLM without an Ontology is like '{{c1::shipping a spreadsheet without a database}}'.",
+    "back": "'Shipping a spreadsheet without a database.'",
+    "tags": ["ch3", "ontology", "aip", "key_phrases"]
+  }
+]

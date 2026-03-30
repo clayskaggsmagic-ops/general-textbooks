@@ -325,6 +325,11 @@ offline HTML flashcard app with these features:
 6. Dark mode premium UI — must work beautifully offline on a plane
 7. LocalStorage persistence — progress survives browser refresh
 8. Export/import — backup progress as JSON
+9. EASY CARD DELETION — every card gets a prominent delete/trash button visible
+   while studying. One tap and it's gone, no confirmation modal. Also add a
+   "Manage Cards" view where you can see all cards in a list and bulk-select
+   cards to delete. Deleted cards are permanently removed from LocalStorage.
+   Keyboard shortcut: 'D' or 'Delete' key to nuke the current card instantly.
 
 The app must be a SINGLE .html file with all CSS/JS inline so it works
 completely offline with no internet connection.
