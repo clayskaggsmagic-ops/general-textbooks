@@ -1,12 +1,12 @@
-# Chapter 29: The Building Blocks — A Beginner's Guide to Every Piece of a Software System
+# Chapter 16: The Building Blocks — A Beginner's Guide to Every Piece of a Software System
 
-> *Chapter 28 taught you how to run the interview and the basic vocabulary. This chapter goes deeper on each building block — databases, caches, queues, and more. Everything is explained from scratch in plain English, with the technical name in parentheses so you can sound fluent in the interview.*
+> *Chapter 15 taught you how to run the interview and the basic vocabulary. This chapter goes deeper on each building block — databases, caches, queues, and more. Everything is explained from scratch in plain English, with the technical name in parentheses so you can sound fluent in the interview.*
 
 ---
 
-## 29.1 Databases — How Data Is Stored
+## 16.1 Databases — How Data Is Stored
 
-In Chapter 28, we introduced databases. Now let's go deeper into the types, when to use each one, and how to talk about them.
+In Chapter 15, we introduced databases. Now let's go deeper into the types, when to use each one, and how to talk about them.
 
 ### Relational Databases (SQL) — The Default Choice
 
@@ -125,7 +125,7 @@ Sometimes the "spreadsheet with relationships" model isn't the best fit. NoSQL d
 
 ### Indexes — How Databases Find Data Fast
 
-We introduced indexes briefly in Chapter 28. Here's the deeper explanation you need.
+We introduced indexes briefly in Chapter 15. Here's the deeper explanation you need.
 
 **The problem:** If your database has 1 billion tweets and you ask "give me all tweets by author 123," the database has two options:
 
@@ -146,9 +146,9 @@ We introduced indexes briefly in Chapter 28. Here's the deeper explanation you n
 
 ---
 
-## 29.2 Caching — Making Reads Lightning Fast
+## 16.2 Caching — Making Reads Lightning Fast
 
-We covered caching basics in Chapter 28 (the "sticky note on your desk" analogy). Here's the deeper knowledge you need for interviews.
+We covered caching basics in Chapter 15 (the "sticky note on your desk" analogy). Here's the deeper knowledge you need for interviews.
 
 ### When Should You Cache?
 
@@ -200,9 +200,9 @@ Every time you write to the database, you also write the same data to the cache.
 
 ---
 
-## 29.3 Message Queues — Doing Work in the Background
+## 16.3 Message Queues — Doing Work in the Background
 
-We covered message queues in Chapter 28 (the "restaurant ticket rail" analogy). Here's the deeper knowledge.
+We covered message queues in Chapter 15 (the "restaurant ticket rail" analogy). Here's the deeper knowledge.
 
 ### Why Queues Exist — A Before/After
 
@@ -259,9 +259,9 @@ When a system sends a message, there are three levels of guarantee about whether
 
 ---
 
-## 29.4 Load Balancing — How Traffic Gets Distributed
+## 16.4 Load Balancing — How Traffic Gets Distributed
 
-We introduced the load balancer in Chapter 28. Here's the extra detail.
+We introduced the load balancer in Chapter 15. Here's the extra detail.
 
 ### Layer 4 vs. Layer 7 Load Balancing
 
@@ -283,7 +283,7 @@ These "layers" refer to the OSI model — a framework that describes the differe
 
 ---
 
-## 29.5 API Design — How the Client Talks to the Server
+## 16.5 API Design — How the Client Talks to the Server
 
 ### REST vs. GraphQL vs. gRPC
 
@@ -340,11 +340,11 @@ The server returns 20 results and a **cursor** — a bookmark pointing to the la
 
 ---
 
-## 29.6 Blob Storage and CDNs — Handling Files
+## 16.6 Blob Storage and CDNs — Handling Files
 
 ### Object Storage (S3) — Where Large Files Live
 
-We mentioned object storage in Chapter 28. The key detail for interviews is **pre-signed URLs** — a pattern for handling file uploads without overwhelming your servers:
+We mentioned object storage in Chapter 15. The key detail for interviews is **pre-signed URLs** — a pattern for handling file uploads without overwhelming your servers:
 
 **The problem:** If a million users upload photos at the same time and all those uploads go through your API server, your server is overwhelmed — it's spending all its time transferring large files instead of handling API requests.
 
@@ -372,7 +372,7 @@ Two modes of CDN operation:
 
 ---
 
-## 29.7 Search — Finding Things in Large Datasets
+## 16.7 Search — Finding Things in Large Datasets
 
 **The problem:** If your database has a billion tweets and someone searches for "pizza cat," the database would need to scan every single tweet to find ones containing those words. With a billion records, this could take minutes. Useless.
 
@@ -402,7 +402,7 @@ Now, searching for "pizza cat" means: find the list for "pizza" ([Tweet 1, 3]), 
 
 ---
 
-## 29.8 Monolith vs. Microservices — How to Organize Your Code
+## 16.8 Monolith vs. Microservices — How to Organize Your Code
 
 **Monolith:** All of your code — the feed system, the user system, the notification system, the search system — lives in one single application. You deploy the whole thing together. When you make a change to the notification code, you redeploy the entire application.
 
@@ -418,9 +418,9 @@ Now, searching for "pizza cat" means: find the list for "pizza" ([Tweet 1, 3]), 
 
 ---
 
-## 29.9 Consistency Patterns — How Fresh Does the Data Need to Be?
+## 16.9 Consistency Patterns — How Fresh Does the Data Need to Be?
 
-We covered strong vs. eventual consistency in Chapter 28. Here's one more pattern:
+We covered strong vs. eventual consistency in Chapter 15. Here's one more pattern:
 
 **Read-your-own-writes:** A middle ground. When YOU update your data, YOU always see your own update immediately. Other users might see the update with a small delay.
 
@@ -430,7 +430,7 @@ We covered strong vs. eventual consistency in Chapter 28. Here's one more patter
 
 ---
 
-## 29.10 Security Basics — Authentication and Authorization
+## 16.10 Security Basics — Authentication and Authorization
 
 **Authentication** = "Who are you?" (Proving your identity)  
 **Authorization** = "What are you allowed to do?" (Checking your permissions)
@@ -448,7 +448,7 @@ The JWT has an expiration time (usually 15 minutes to a few hours). When it expi
 
 ---
 
-## 29.11 Data Processing — Batch vs. Stream
+## 16.11 Data Processing — Batch vs. Stream
 
 **Batch processing:** Process a large pile of data all at once, on a schedule. Like doing all your laundry on Sunday instead of washing each item as it gets dirty.
 
@@ -466,7 +466,7 @@ The JWT has an expiration time (usually 15 minutes to a few hours). When it expi
 
 ---
 
-## 29.12 Observability — How You Know If Something Is Broken
+## 16.12 Observability — How You Know If Something Is Broken
 
 **The four golden signals** (from Google's Site Reliability Engineering handbook):
 
@@ -481,7 +481,7 @@ The JWT has an expiration time (usually 15 minutes to a few hours). When it expi
 
 ---
 
-## 29.13 Quick Reference — When to Use What
+## 16.13 Quick Reference — When to Use What
 
 | Problem | Building Block | Plain English |
 |---|---|---|
@@ -497,7 +497,7 @@ The JWT has an expiration time (usually 15 minutes to a few hours). When it expi
 
 ---
 
-## 29.14 Chapter Summary
+## 16.14 Chapter Summary
 
 You now know every major building block of a modern software system — what each one does, when to use it, and how to explain it in plain English with the technical term attached. The goal isn't to memorize scripts — it's to understand the *why* behind each choice so you can reason about trade-offs naturally in an interview.
 
@@ -509,4 +509,4 @@ For each building block, you should be able to answer:
 
 ---
 
-*Next Chapter: Chapter 30 — System Design Practice Problems: Six Complete Worked Designs →*
+*Next Chapter: Chapter 17 — System Design Practice Problems: Six Complete Worked Designs →*

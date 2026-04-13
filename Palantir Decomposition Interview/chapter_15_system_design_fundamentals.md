@@ -1,4 +1,4 @@
-# Chapter 28: System Design Fundamentals — How to Design a Software System From Scratch
+# Chapter 15: System Design Fundamentals — How to Design a Software System From Scratch
 
 > *This chapter teaches you system design from zero. Every concept is explained in plain English first, with the technical term in parentheses so you know what to call it in the interview. If you read this chapter and understand every section, you'll be able to walk through a system design interview.*
 
@@ -566,4 +566,4 @@ This narrate-the-trade-off pattern — "I chose X over Y because Z" — is the s
 
 ---
 
-*Next Chapter: Chapter 29 — The Building Blocks: Deep Dives into Databases, Caching, Queuing, and More →*
+*Next Chapter: Chapter 16 — The Building Blocks: Deep Dives into Databases, Caching, Queuing, and More →*
